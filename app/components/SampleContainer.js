@@ -3,7 +3,8 @@ import { Container } from 'flux/utils';
 import SampleStore from '../stores/SampleStore';
 import Navi from './Navi';
 import Menu from './Menu';
-import Content from './Content';
+import Editor from './Editor';
+import MonacoEditor from 'react-monaco-editor';
 
 class SampleContainer extends Component {
   static getStores() {
@@ -25,12 +26,12 @@ class SampleContainer extends Component {
         <Navi title="Sample" style={{zIndex:1201, position: 'fixed', top: 0}} />
         <div style={{display: 'flex'}}>
           <Menu style={{width:200, paddingTop:72}} />
-          <Content 
-            title={this.state.sample.title} 
-            subtitle={this.state.sample.subtitle}
-            text={this.state.sample.text}
-            style={{padding: 20, paddingTop: 72}}
-          />
+          <Editor style={{
+            paddingTop: 100, 
+            display: 'flex', 
+            justifyContent: 'center',
+            alighItems: 'center'
+          }}/>
         </div>
       </div>
     );

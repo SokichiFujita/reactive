@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
   mode: "production",
@@ -26,7 +27,15 @@ const config = {
     historyApiFallback: true,
     compress: true,
     open: true
-  }
+  },
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: 'node_modules/monaco-editor/min/vs',
+        to: '../vs',
+      }
+    ])
+  ]
 };
 
 module.exports = config;
