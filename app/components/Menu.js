@@ -12,7 +12,8 @@ class Menu extends Component {
         <List style={this.props.style}>
           <ListSubheader>Menu</ListSubheader>
           <ListItem component={Link} to="/">Top</ListItem>
-          <ListItem component={Link} to="/sample">Sample</ListItem>
+          <ListItem component={Link} to="/editor">Editor</ListItem>
+          <ListItem component={Link} to="/editor2">Editor2</ListItem>
         </List>
       </Drawer>
     );

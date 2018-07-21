@@ -9,10 +9,9 @@ class Example extends React.Component {
   render() {
     return <div style={{color:'red'}}>Hello World!</div>
   }
-}
-ReactDOM.render(<Example/>, mountNode)
-`;
+}`;
 
+    /*
     return {
       components: [component], 
       containers: [], 
@@ -22,6 +21,11 @@ ReactDOM.render(<Example/>, mountNode)
       app: [], 
       scopes: [], 
     };
+    */
+    return {
+      components: [component], 
+    };
+   
   }
 
   reduce(state, action) {
@@ -29,8 +33,9 @@ ReactDOM.render(<Example/>, mountNode)
       case 'components/get':
         return state.components;
       case 'components/update':
-        const newState = Object.assign(this.state, {})
-        return action.data.components;
+        return {
+          components: action.data
+        };
       case 'all/get':
         return state;
       case 'all/update':
