@@ -22,7 +22,6 @@ class Editor extends Component {
 
   render() {
     const code = this.props.code;
-    console.log(code);
     const options = {
       selectOnLineNumbers: true,
       autoIndent: true,
@@ -52,9 +51,9 @@ class Editor extends Component {
         code={code.components[0]}
         scope={scope}
       >
-        <LivePreview />
         <LiveEditor onChange={this.handleChange}/>
         <LiveError style={{backgroundColor:'black', color:'red'}}/>
+        <LivePreview />
       </LiveProvider>
     );
 
@@ -70,11 +69,33 @@ class Editor extends Component {
       />
     );
 
+    const row1 = (
+      <div style={Object.assign(this.props.style, { 
+        display: 'flex',
+        flexDireciton: 'column',
+        width: '100%',
+      })}>
+        <div><h1>Monaco</h1>{editor}</div>
+        <div><h1>Live Preview</h1>{live}</div>
+        <div><h1>Component Playground</h1>{playground}</div>
+      </div>
+    );
+
+    const row2 = (
+      <div style={{}}> 
+        <h1>row2</h1>
+        <div>aaaaa</div>
+      </div>
+    );
+    
     return (
-      <div style={this.props.style}>
-        {editor}
-        {live}
-        {playground}
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}>
+        {row1}
+        {row2}
+
       </div>
     );
   }

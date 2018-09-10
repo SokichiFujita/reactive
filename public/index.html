@@ -15,7 +15,23 @@
     <div id='root3'></div>
     <div id='root4'></div>
     <div id='root5'></div>
-    <script src="./js/bundle.js"></script>
     <script src="./vs/loader.js"></script>
+    <script type=module>
+    (async () => {
+      const runEditor = () => import('./vs/loader.js')
+      const runBundle = () => import('./js/bundle.js')
+      if (navigator.serviceWorker.controller) {
+        console.log('start');
+        runBundle()
+        //runEditor()
+        console.log('end');
+      } else {
+        const reg = await navigator.serviceWorker.register("./sw.js");
+        console.log(reg)
+        await navigator.serviceWorker.ready;
+        navigator.serviceWorker.addEventListener('controllerchange', run)
+      }
+    })()
+    </script>   
   </body>
 </html>
